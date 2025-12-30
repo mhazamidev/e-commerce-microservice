@@ -8,6 +8,7 @@ services:
       - DB_HOST=customer.db
       - DB_NAME=CustomerDB
       - DB_PASSWORD=p@sswordD1
+      - JWT_SECRET=xiyvfbhzNL8Br7Rl5jfhposePmkLkTg3
     ports:
       - "8080"
       - "8081"

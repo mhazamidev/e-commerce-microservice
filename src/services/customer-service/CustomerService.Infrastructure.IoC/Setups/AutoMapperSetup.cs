@@ -8,6 +8,9 @@ public static class AutoMapperSetup
 {
     public static void AddAutoMapperSetup(this IServiceCollection services)
     {
+        if (null == services)
+            throw new ArgumentNullException(nameof(services));
+
         services.AddAutoMapper(config => { }, Assembly.GetAssembly(typeof(MapperBase)));
     }
 }

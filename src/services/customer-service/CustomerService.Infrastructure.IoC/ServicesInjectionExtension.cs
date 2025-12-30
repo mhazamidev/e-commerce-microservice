@@ -1,6 +1,9 @@
 ﻿using CustomerService.Applilcation.Email;
+using CustomerService.Domain.Repositories;
 using CustomerService.Infrastructure.Common.Interfaces;
 using CustomerService.Infrastructure.IoC.Setups;
+using CustomerService.Infrastructure.Persistence.Repositories;
+using CustomerService.Infrastructure.Persistence.UOW;
 using Microsoft.Extensions.DependencyInjection;
 namespace CustomerService.Infrastructure.IoC;
 
@@ -10,7 +13,13 @@ public static class ServicesInjectionExtension
     {
         services.AddDatabaseSetup();
         services.AddAutoMapperSetup();
-        services.AddScoped<IEmailService, EmailService>(); 
+        services.AddAuthenticationSetup();
+        services.AddSwaggerSetup();
+
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<ICustomerUnitOfWok, CustomerUnitOfWok>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IAddressRepository, AddressRepository>();
     }
 }
 

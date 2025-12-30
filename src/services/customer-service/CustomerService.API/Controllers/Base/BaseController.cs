@@ -1,10 +1,12 @@
 ﻿using CustomerService.Applilcation.Core.CQRS.CommandHandling;
 using CustomerService.Applilcation.Core.CQRS.QueryHandling;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NETCareer.WebAPI.Controllers.Base
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController : ControllerBase
