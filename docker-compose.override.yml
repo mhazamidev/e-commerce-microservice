@@ -1,0 +1,35 @@
+services:
+  customer.api:
+    container_name: customer.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - DB_HOST=customer.db
+      - DB_NAME=CustomerDB
+      - DB_PASSWORD=p@sswordD1
+    ports:
+      - "8080"
+      - "8081"
+    depends_on:
+      - customer.db
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  customer.db:
+    container_name: customer.db
+    environment:
+      - SA_PASSWORD=p@sswordD1
+      - ACCEPT_EULA=Y
+    volumes:
+      - customerdbdata:/var/opt/mssql
+    ports:
+      - "1401:1433"
+    restart: always
+
+volumes:
+  customerdbdata:  
+    
+  

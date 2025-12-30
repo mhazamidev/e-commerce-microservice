@@ -1,0 +1,6 @@
+{
+  "Routes": [],
+  "GlobalConfiguration": {
+    "baseUrl": "http://localhost:800"
+  }
+}

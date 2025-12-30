@@ -1,0 +1,9 @@
+services:
+  customer.api:
+    image: ${DOCKER_REGISTRY-}customerserviceapi
+    build:
+      context: .
+      dockerfile: src/services/customer-service/CustomerService.API/Dockerfile
+
+  customer.db:
+    image: mcr.microsoft.com/mssql/server
