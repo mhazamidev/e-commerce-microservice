@@ -9,5 +9,5 @@ public interface ICustomerRepository
     Task<Customer?> GetAsync(CustomerId id, CancellationToken cancellationToken = default);
     Task AddAsync(Customer customer, CancellationToken cancellationToken = default);
     void Update(Customer customer);
-    Task Delete(CustomerId id, CancellationToken cancellationToken = default);
+    Task DeleteAsync(CustomerId id, CancellationToken cancellationToken = default);
 }

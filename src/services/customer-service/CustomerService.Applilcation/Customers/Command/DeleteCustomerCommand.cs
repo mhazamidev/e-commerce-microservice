@@ -18,7 +18,7 @@ public class DeleteCustomerCommandHandler(ICustomerUnitOfWok UnitOfWok) : Comman
 {
     public override async Task<bool> ExecuteCommand(DeleteCustomerCommand command, CancellationToken cancellationToken = default)
     {
-        await UnitOfWok.Customers.Delete(new CustomerId(command.Id));
+        await UnitOfWok.Customers.DeleteAsync(new CustomerId(command.Id));
         var ex = await UnitOfWok.CommitAsync(cancellationToken);
         return ex > 0;
     }

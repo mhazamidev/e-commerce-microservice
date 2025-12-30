@@ -81,31 +81,33 @@ public sealed class Customer : AggregateRoot<CustomerId>
 
 
     public Address AddAddress(
-      CustomerId customerId,
-      string line1,
-      string? line2,
-      string city,
-      string? state,
-      string postalCode,
-      string country,
-      bool isPrimary = false)
+           string line1,
+           string? line2,
+           string city,
+           string? state,
+           string postalCode,
+           string country,
+           bool isPrimary = false)
     {
         var address = Address.Create(
-            customerId,
-            line1, line2, city, state, postalCode, country, isPrimary);
+            Id,
+            line1, line2, city, state, postalCode, country);
 
-        if (isPrimary)
-        {
-            foreach (var addr in _addresses)
-                addr.UnmarkPrimary();
-
-            address.MarkPrimary();
-        }
+        if (isPrimary || !_addresses.Any())
+            SetPrimaryAddress(address);
 
         _addresses.Add(address);
 
         AddDomainEvent(new CustomerAddressAddedDomainEvent(Id, address.Id));
 
         return address;
+    }
+
+    private void SetPrimaryAddress(Address address)
+    {
+        foreach (var addr in _addresses)
+            addr.UnmarkPrimary();
+
+        address.MarkPrimary();
     }
 }

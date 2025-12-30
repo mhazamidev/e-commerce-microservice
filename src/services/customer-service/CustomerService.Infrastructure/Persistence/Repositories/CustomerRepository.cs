@@ -13,7 +13,7 @@ public class CustomerRepository(CustomerDbContext _dbContext) : ICustomerReposit
         await _dbContext.Customers.AddAsync(customer, cancellationToken);
     }
 
-    public async Task Delete(CustomerId id, CancellationToken cancellationToken = default)
+    public async Task DeleteAsync(CustomerId id, CancellationToken cancellationToken = default)
     {
         await _dbContext.Customers
               .Where(c => c.Id == id)
@@ -32,6 +32,7 @@ public class CustomerRepository(CustomerDbContext _dbContext) : ICustomerReposit
     public async Task<Customer?> GetAsync(CustomerId id, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Customers
+            .Include(c => c.Addresses)
             .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
     }
 

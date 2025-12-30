@@ -19,7 +19,6 @@ public static class ServicesInjectionExtension
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<ICustomerUnitOfWok, CustomerUnitOfWok>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
-        services.AddScoped<IAddressRepository, AddressRepository>();
     }
 }
 

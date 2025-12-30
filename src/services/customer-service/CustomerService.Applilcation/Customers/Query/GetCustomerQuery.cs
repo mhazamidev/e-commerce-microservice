@@ -28,8 +28,8 @@ public class GetCustomerQueryHandler(ICustomerUnitOfWok unitOfWok, IMapper mappe
     }
 }
 
-public record GetCustomerDto(Guid Id, string FirstName, string LastName, string Email);
-
+public record GetCustomerDto(Guid Id, string FirstName, string LastName, string Email, List<AddressDto> Addresses);
+public record AddressDto(Guid Id, string Line1, string? Line2, string City, string? State, string PostalCode, string Country, bool IsPrimary);
 public class GetCustomerQueryValidator : AbstractValidator<GetCustomerQuery>
 {
     public GetCustomerQueryValidator()
