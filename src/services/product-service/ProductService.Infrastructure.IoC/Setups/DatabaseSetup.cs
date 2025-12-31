@@ -1,6 +1,6 @@
-﻿using CustomerService.Infrastructure.Persistence.Context;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+using ProductService.Infrastructure.Persistence.Context;
 using ProductService.Infrastructure.Persistence.Logging;
 
 namespace ProductService.Infrastructure.IoC.Setups;
@@ -15,12 +15,13 @@ public static class DatabaseSetup
         var db_host = Environment.GetEnvironmentVariable("DB_HOST");
         var db_name = Environment.GetEnvironmentVariable("DB_NAME");
         var db_password = Environment.GetEnvironmentVariable("DB_PASSWORD");
-        var connectionString = $"Host={db_host};Database={db_name};User id=sa;Password={db_password};TrustServerCertificate=true;";
-        service.AddDbContext<CustomerDbContext>((provider, options) =>
+        var dbPort = Environment.GetEnvironmentVariable("DB_Port");
+        var connectionString = $"server={db_host};port={dbPort};database={db_name};user=root;password={db_password}";
+        service.AddDbContext<ProductDbContext>((provider, options) =>
         {
             var interceptor = provider.GetRequiredService<AuditSaveChangesInterceptor>();
             options
-                .UseSqlServer(connectionString)
+                .UseMySQL(connectionString)
                 .AddInterceptors(interceptor);
         });
         service.AddSingleton<AuditSaveChangesInterceptor>();
