@@ -7,3 +7,13 @@ services:
 
   customer.db:
     image: mcr.microsoft.com/mssql/server
+
+  productservice.api:
+    image: ${DOCKER_REGISTRY-}productserviceapi
+    build:
+      context: .
+      dockerfile: src/services/product-service/ProductService.API/Dockerfile
+
+  product.db:
+    image: mysql:latest
+

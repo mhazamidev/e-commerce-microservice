@@ -19,6 +19,7 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
   customer.db:
     container_name: customer.db
     environment:
@@ -30,7 +31,31 @@ services:
       - "1401:1433"
     restart: always
 
+  productservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - DB_Host=productdb
+      - DB_Name=dms_product
+      - DB_Password=123456
+      - DB_Port=3306
+    ports:
+      - "8080"
+    depends_on:
+      - product.db
+
+  product.db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+
 volumes:
   customerdbdata:  
+  mysql_data:
     
   
+

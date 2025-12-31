@@ -5,8 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-	
-	
+
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.1.1" />
 		<PackageReference Include="MediatR" Version="14.0.0" />
@@ -14,16 +13,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.2.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
-	
-	
+
 	<ItemGroup>
-	  <ProjectReference Include="..\CustomerService.Domain\CustomerService.Domain.csproj" />
-	  <ProjectReference Include="..\CustomerService.Infrastructure\CustomerService.Infrastructure.csproj" />
-	</ItemGroup>
-	
-	
-	<ItemGroup>
-	  <Folder Include="Messaging\" />
+		<ProjectReference Include="..\ProductService.Domain\ProductService.Domain.csproj" />
+		<ProjectReference Include="..\ProductService.Infrastructure\ProductService.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>
