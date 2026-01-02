@@ -45,6 +45,7 @@ services:
       - product.db
 
   product.db:
+    container_name: product.db
     environment:
       - MYSQL_ROOT_PASSWORD=123456
     ports:
@@ -53,9 +54,29 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  order.db:
+    container_name: order.db
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+
+  orderservice.api:
+    container_name: orderservice.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "8080"
+    depends_on:
+      - order.db
+
 volumes:
   customerdbdata:  
   mysql_data:
+  mongo_data:
     
   
+
 

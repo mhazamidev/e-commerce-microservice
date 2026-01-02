@@ -2,7 +2,7 @@
 using FluentValidation;
 using FluentValidation.Results;
 using ProductService.Applilcation.Core.CQRS.QueryHandling;
-using ProductService.Applilcation.Core.DTO;
+using ProductService.Applilcation.DTO;
 using ProductService.Infrastructure.Persistence.UOW;
 
 namespace ProductService.Applilcation.Products.Query;

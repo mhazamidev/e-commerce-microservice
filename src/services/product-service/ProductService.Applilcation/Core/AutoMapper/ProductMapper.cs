@@ -1,4 +1,4 @@
-﻿using ProductService.Applilcation.Core.DTO;
+﻿using ProductService.Applilcation.DTO;
 using ProductWebApi.Domain.Entities;
 
 namespace ProductService.Applilcation.Core.AutoMapper;

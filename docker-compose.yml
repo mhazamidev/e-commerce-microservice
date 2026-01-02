@@ -17,3 +17,13 @@ services:
   product.db:
     image: mysql:latest
 
+  order.db:
+    image: mongo:latest
+
+
+  orderservice.api:
+    image: ${DOCKER_REGISTRY-}orderserviceapi
+    build:
+      context: .
+      dockerfile: src/services/order-service/OrderService.API/Dockerfile
+

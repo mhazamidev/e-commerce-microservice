@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.API.Controllers.Base;
-using ProductService.Applilcation.Core.DTO;
+using ProductService.Applilcation.DTO;
 using ProductService.Applilcation.Products.Command;
 using ProductService.Applilcation.Products.Query;
 
