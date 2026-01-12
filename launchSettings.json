@@ -6,7 +6,8 @@
       "serviceActions": {
         "customerservice.api": "StartDebugging",
         "productservice.api": "StartDebugging",
-        "orderservice.api": "StartDebugging"
+        "orderservice.api": "StartDebugging",
+        "identityservice.api": "StartDebugging"
       }
     }
   }

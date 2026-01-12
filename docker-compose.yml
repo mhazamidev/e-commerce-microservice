@@ -20,10 +20,19 @@ services:
   order.db:
     image: mongo:latest
 
+  identity.db:
+     image: postgres:latest
 
   orderservice.api:
     image: ${DOCKER_REGISTRY-}orderserviceapi
     build:
       context: .
       dockerfile: src/services/order-service/OrderService.API/Dockerfile
+
+
+  identityservice.api:
+    image: ${DOCKER_REGISTRY-}identityserviceapi
+    build:
+      context: .
+      dockerfile: src/services/identity-service/IdentityService.API/Dockerfile
 

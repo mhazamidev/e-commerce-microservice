@@ -39,6 +39,7 @@ services:
       - DB_Name=dms_product
       - DB_Password=123456
       - DB_Port=3306
+      - JWT_SECRET=xiyvfbhzNL8Br7Rl5jfhposePmkLkTg3
     ports:
       - "8080"
     depends_on:
@@ -67,16 +68,49 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
+      - JWT_SECRET=xiyvfbhzNL8Br7Rl5jfhposePmkLkTg3
     ports:
       - "8080"
     depends_on:
       - order.db
 
+  identityservice.api:
+    container_name: identityservice.api
+    depends_on:
+      - identity.db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - JWT_SECRET=xiyvfbhzNL8Br7Rl5jfhposePmkLkTg3
+      - JWT_Expiration=20
+      - JWT_Issuer=DMS.Identity
+      - JWT_Audience=DMS.Identity.Client
+      - DB_Host=identitydb
+      - DB_Name=dms_identity
+      - DB_UserName=admin
+      - DB_Password=admin
+      - DB_Port=5432
+    ports:
+      - "8080"
+  
+  identity.db:
+    container_name: identity.db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
 volumes:
   customerdbdata:  
   mysql_data:
   mongo_data:
+  postgres_data:
     
   
+
 
 

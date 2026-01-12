@@ -55,6 +55,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Domain", "src\services\order-service\OrderService.Domain\OrderService.Domain.csproj", "{90B563B3-F84F-4CDB-B350-CFF562AE580C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identity-service", "identity-service", "{731D7965-6E62-4468-B480-32D6B6086B8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.API", "src\services\identity-service\IdentityService.API\IdentityService.API.csproj", "{3033C7EC-A238-452B-8096-6CD62D31001B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +141,10 @@ Global
 		{90B563B3-F84F-4CDB-B350-CFF562AE580C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90B563B3-F84F-4CDB-B350-CFF562AE580C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90B563B3-F84F-4CDB-B350-CFF562AE580C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3033C7EC-A238-452B-8096-6CD62D31001B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3033C7EC-A238-452B-8096-6CD62D31001B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3033C7EC-A238-452B-8096-6CD62D31001B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3033C7EC-A238-452B-8096-6CD62D31001B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -166,6 +174,8 @@ Global
 		{60BE6FBB-982C-4551-B931-DB5A86181CB8} = {68324A96-3B89-4A31-BA23-F9A6A67AE732}
 		{791B5DD2-FB5F-4299-88F5-539DB3DDCD60} = {68324A96-3B89-4A31-BA23-F9A6A67AE732}
 		{90B563B3-F84F-4CDB-B350-CFF562AE580C} = {68324A96-3B89-4A31-BA23-F9A6A67AE732}
+		{731D7965-6E62-4468-B480-32D6B6086B8F} = {EC7140DE-7770-411B-AAEE-245A237CFF68}
+		{3033C7EC-A238-452B-8096-6CD62D31001B} = {731D7965-6E62-4468-B480-32D6B6086B8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C4985896-3576-4ED1-A554-316D810D9704}
